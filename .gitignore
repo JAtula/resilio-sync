@@ -1,6 +1,0 @@
-data
-.dockerignore
-run_sync
-sample.conf
-sync.conf
-sync_org.conf
