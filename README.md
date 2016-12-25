@@ -5,48 +5,13 @@ Sync uses peer-to-peer technology to provide fast, private file sharing for team
 
 # Usage
 
-    DATA_FOLDER=/path/to/data/folder/on/the/host
-    WEBUI_PORT=[ port to access the webui on the host ]
+    SYNC_DIR=/path/to/data/folder/on/the/host
+    SECRET=[ /usr/bin/rslsync --generate secret ]
 
     mkdir -p $DATA_FOLDER
 
     docker run -d --name Sync \
-      -p 127.0.0.1:$WEBUI_PORT:8888 -p 55555 \
-      -v $DATA_FOLDER:/mnt/sync \
+      -e SYNC_DIR=/data \
+      -e SECRET=A7EO4A2Q6FUOCGNI34WOBI3ENOGFFOQ6N
       --restart on-failure \
-      resilio/sync
-
-Go to localhost:$WEBUI_PORT in a web browser to access the webui.
-
-#### LAN access
-
-If you do not want to limit the access to the webui to localhost, run instead:
-
-    docker run -d --name Sync \
-      -p $WEBUI_PORT:8888 -p 55555 \
-      -v $DATA_FOLDER:/mnt/sync \
-      --restart on-failure \
-      resilio/sync
-
-#### Extra directories
-
-If you need to mount extra directories, mount them in /mnt/mounted_folders:
-
-    docker run -d --name Sync \
-      -p 127.0.0.1:$WEBUI_PORT:8888 -p 55555 \
-      -v $DATA_FOLDER:/mnt/sync \
-      -v <OTHER_DIR>:/mnt/mounted_folders/<DIR_NAME> \
-      -v <OTHER_DIR2>:/mnt/mounted_folders/<DIR_NAME2> \
-      --restart on-failure \
-      resilio/sync
-
-Do not create directories at the root of mounted_folders from the Sync webui since this new folder will not be mounted on the host.
-
-# Volume
-
-* /mnt/sync - State files and Sync folders
-
-# Ports
-
-* 8888 - Webui
-* 55555 - Listening port for Sync traffic
+      jatula/resilio-sync:2.4.4
