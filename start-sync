@@ -20,10 +20,7 @@ echo "{
             \"use_relay_server\": true,
             \"use_tracker\": true,
             \"use_dht\": false,
-            \"search_lan\": false,
-            \"known_hosts\": [
-                "wp-sync:55555"
-            ]
+            \"search_lan\": true,
             \"use_sync_trash\": false
         }
     ]
