@@ -11,8 +11,8 @@ This image is primarily meant to be used to share a data folder between containe
 
 
     docker run -d --name Sync \
-      --volumes-from=<other container id>
+      --volumes-from=<other container id> \
       -e SYNC_DIR=/folder/on/other/container \
-      -e SECRET=A7EO4A2Q6FUOCGNI34WOBI3ENOGFFOQ6N
+      -e SECRET=A7EO4A2Q6FUOCGNI34WOBI3ENOGFFOQ6N \
       --restart on-failure \
       jatula/resilio-sync:2.4.4
