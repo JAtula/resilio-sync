@@ -7,7 +7,7 @@ This image is primarily meant to be used to share a data folder between containe
 
 # Usage
 
-    docker run -i --rm --entrypoint=/usr/bin/rslsync jatula/resilio-sync:2.4.4 --generate-secret
+    docker run -i --rm --entrypoint=/usr/bin/rslsync jatula/resilio-sync:2.4.5 --generate-secret
 
 
     docker run -d --name Sync \
@@ -15,4 +15,4 @@ This image is primarily meant to be used to share a data folder between containe
       -e SYNC_DIR=/folder/on/other/container \
       -e SECRET=A7EO4A2Q6FUOCGNI34WOBI3ENOGFFOQ6N \
       --restart on-failure \
-      jatula/resilio-sync:2.4.4
+      jatula/resilio-sync:2.4.5
